@@ -1,4 +1,4 @@
-exec(open(r"C:/Users/rfrouin/Documents/python sem 1/Projet python/pfc_pvp.py").read())
+exec(open(r"pfc_pvp.py").read())
 def afficher_grille(grille):
     print("     0)  1)  2)")
     print("   -------------")
@@ -27,15 +27,15 @@ def tour(grille,joueur):
         ligne = input("Et maintenant la ligne : ")
         if grille[int(colonne)+int(ligne)*3]!=" ":
             afficher_grille(grille)
-            print("Cette case est déjà prise >:( selectionne un autre case !")
+            print("Cette case est d\u00e9jà prise >:( selectionne un autre case !")
         elif colonne >= "3":
-            print("ta mère la pute tu sais pas écrire")
+            print("Une erreur c'est produite. Vous avez \u00e9cris ",colonne," au lie de 0, 1, ou 2")
             cover = 0
         elif ligne >= "3":
-            print("ta mère la pute tu sais pas écrire")
+            print("Une erreur c'est produite. Vous avez \u00e9cris ",ligne," au lie de 0, 1, ou 2")
             liver = 0
         else:
-            print("OK ! C'est placé dans la case ("+colonne+","+ligne+")")
+            print("OK ! C'est plac\u00e9 dans la case ("+colonne+","+ligne+")")
             cover = 1
             liver = 1
             break
@@ -78,18 +78,23 @@ print("Que le match COMMENCE !!!")
 grille=[" "," "," "," "," "," "," "," "," "]
 afficher_grille(grille)
 gagne = 0
-while gagne == 0:
-    tour(grille,joueur)
-    if gagnant(grille):
-        print("Bravo joueur "+str(joueur)+" tu remporte la partie !")
-        gagne = 1
-    else:
-        if match_nul(grille):
-            print("Il n'y a plus de place ! C'est donc un match nul !")
+while jouer == 1:
+    while gagne == 0:
+        tour(grille,joueur)
+        if gagnant(grille):
+            print("Bravo joueur "+str(joueur)+" tu remporte la partie !")
             gagne = 1
-    if joueur == 1:
-        joueur = 2
-    else:
-        joueur = 1
-
+        else:
+            if match_nul(grille):
+                print("Il n'y a plus de place ! C'est donc un match nul !")
+                gagne = 1
+        if joueur == 1:
+            joueur = 2
+        else:
+            joueur = 1
+    jouer = int(input("voullez vous rejouer (1), changer de jeu (2), ou partir (3)? : "))
+if jouer == 2:
+    exec(open(r"../menue.py").read())
+else:
+    print("Au-revoir !")
 #FIN

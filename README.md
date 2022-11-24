@@ -1,2 +1,2 @@
-# Morpion
-bah un morpion en python quoi
+lancez Launch.bat et profitez d'un excellent morpion, pierre feuille ciseau et peut-être même d'autre jeu...
+

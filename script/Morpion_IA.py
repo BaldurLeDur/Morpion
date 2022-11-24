@@ -1,6 +1,6 @@
 import random
 import time
-exec(open(r"C:/Users/rfrouin/Documents/try/pfc.py").read())
+exec(open(r"pfc_IA.py").read())
 def afficher_grille(grille):
     print("     0)  1)  2)")
     print("   -------------")
@@ -128,34 +128,24 @@ def bot(grille):
     elif (grille[0] or grille[2] or grille[6] or grille[8]) == "X":
         grille[4] = "O"
     #random début
-    elif grille[1] == "X":
-        del place[1]
-        choix = random.choice(place)
-        grille[choix] = "O"
-    elif grille[3] == "X":
-        del place[3]
-        choix = random.choice(place)
-        grille[choix] = "O"
-    elif grille[4] == "X":
-        del place[4]
-        choix = random.choice(place)
-        grille[choix] = "O"
-    elif grille[5] == "X":
-        del place[5]
-        choix = random.choice(place)
-        grille[choix] = "O"
-    elif grille[7] == "X":
-        del place[7]
-        choix = random.choice(place)
-        grille[choix] = "O"
     else:
         choix = random.choice(place)
-        grille[choix] = "O"  
+        while grille[choix] == "X" or "O":
+            if grille[choix] == "X":
+                del place[choix]
+                choix = random.choice(place)
+            elif grille[choix] == "O":
+                del place[choix]
+                choix = random.choice(place)
+            elif grille[choix] == " ":
+                grille[choix] = "O"
+                break  
     
         
 def tour(grille,joueur):
     if joueur == 1:
-        print("C'est à toi joueur "+str(joueur))
+        print("C'est \u00e0 toi joueur "+str(joueur))
+        afficher_grille(grille)
         cover = 0
         liver = 0
         while cover == 0 or liver == 0:
@@ -163,25 +153,25 @@ def tour(grille,joueur):
             ligne = input("Et maintenant la ligne : ")
             if grille[int(colonne)+int(ligne)*3]!=" ":
                 afficher_grille(grille)
-                print("Cette case est déjà prise >:( selectionne un autre case !")
+                print("Cette case est d\u00e9j\u00e0 prise >:( selectionne un autre case !")
             elif colonne >= "3":
-                print("Cette valeur n'est pas définis recommence")
+                print("Cette valeur n'est pas d\u00e9finis recommence")
                 cover = 0
             elif ligne >= "3":
-                print("Cette valeur n'est pas définis recommence")
+                print("Cette valeur n'est pas d\u00e9finis recommence")
                 liver = 0
             else:
-                print("OK ! C'est placé dans la case ("+colonne+","+ligne+")")
+                print("OK ! C'est plac\u00e9 dans la case ("+colonne+","+ligne+")")
                 cover = 1
                 liver = 1
                 break
         grille[int(colonne)+int(ligne)*3]="X"
-    elif joueur == 2:
-        print("le bot choisi...")
+    elif joueur == "robot":
+        print("le robot choisi...")
         time.sleep(3)
         bot(grille)
     afficher_grille(grille)
-    time.sleep(2)
+    time.sleep(1)
 
 def gagnant(grille):
     if (grille[0]==grille[1]) and (grille[0]==grille[2]) and (grille[0]!=" "):
@@ -209,24 +199,30 @@ def match_nul(grille):
 
 
 #DEBUT
-print("Joueur 1 tu possède les X, Joueur 2 tu possède les O")
-print("Que le match COMMENCE !!!")
-grille=[" "," "," "," "," "," "," "," "," "]
-afficher_grille(grille)
-gagne = 0
-while gagne == 0:
-    tour(grille,joueur)
-    if gagnant(grille):
-        print("Bravo joueur "+str(joueur)+" tu remporte la partie !")
-        gagne = 1
-    else:
-        if match_nul(grille):
-            print("Il n'y a plus de place ! C'est donc un match nul !")
+while jouer == 1:
+    print("Joueur 1 tu possède les X, Joueur 2 tu possède les O")
+    print("Que le match COMMENCE !!!")
+    grille=[" "," "," "," "," "," "," "," "," "]
+    gagne = 0
+    while gagne == 0:
+        tour(grille,joueur)
+        if gagnant(grille):
+            print("Bravo joueur "+str(joueur)+" tu remporte la partie !")
             gagne = 1
-    if joueur == 1:
-        joueur = 2
-    else:
-        joueur = 1
+        else:
+            if match_nul(grille):
+                print("Il n'y a plus de place ! C'est donc un match nul !")
+                gagne = 1
+        if joueur == 1:
+            joueur = "robot"
+        else:
+            joueur = 1
+    jouer = int(input("voullez vous rejouer (1), changer de jeu (2), ou partir (3)? : "))
+if jouer == 2:
+    exec(open(r"../menue.py").read())
+else:
+    print("Au-revoir !")
+
 #FIN
 
 
