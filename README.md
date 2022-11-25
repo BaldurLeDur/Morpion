@@ -1,2 +1,1 @@
-lancez Launch.bat et profitez d'un excellent morpion, pierre feuille ciseau et peut-être même d'autre jeu...
-
+Le fichier bat ne marche plus veuillez allez directement dans le fichier script et lancer les programme.
