@@ -217,10 +217,6 @@ while gagne == 0:
         joueur = "robot"
     else:
         joueur = 1
-jouer = int(input("voullez vous rejouer (1), changer de jeu (2), ou partir (3)? : "))
-if jouer == 2:
-    exec(open(r"menue.py").read())
-else:
     print("Au-revoir !")
 
 #FIN
