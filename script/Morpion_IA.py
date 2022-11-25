@@ -1,6 +1,6 @@
 import random
 import time
-exec(open(r"pfc_IA.py").read())
+exec(open(r"script/pfc_IA.py").read())
 def afficher_grille(grille):
     print("     0)  1)  2)")
     print("   -------------")
@@ -199,27 +199,27 @@ def match_nul(grille):
 
 
 #DEBUT
-while jouer == 1:
-    print("Joueur 1 tu possède les X, Joueur 2 tu possède les O")
-    print("Que le match COMMENCE !!!")
-    grille=[" "," "," "," "," "," "," "," "," "]
-    gagne = 0
-    while gagne == 0:
-        tour(grille,joueur)
-        if gagnant(grille):
-            print("Bravo joueur "+str(joueur)+" tu remporte la partie !")
+
+print("Joueur 1 tu possède les X, Joueur 2 tu possède les O")
+print("Que le match COMMENCE !!!")
+grille=[" "," "," "," "," "," "," "," "," "]
+gagne = 0
+while gagne == 0:
+    tour(grille,joueur)
+    if gagnant(grille):
+        print("Bravo joueur "+str(joueur)+" tu remporte la partie !")
+        gagne = 1
+    else:
+        if match_nul(grille):
+            print("Il n'y a plus de place ! C'est donc un match nul !")
             gagne = 1
-        else:
-            if match_nul(grille):
-                print("Il n'y a plus de place ! C'est donc un match nul !")
-                gagne = 1
-        if joueur == 1:
-            joueur = "robot"
-        else:
-            joueur = 1
-    jouer = int(input("voullez vous rejouer (1), changer de jeu (2), ou partir (3)? : "))
+    if joueur == 1:
+        joueur = "robot"
+    else:
+        joueur = 1
+jouer = int(input("voullez vous rejouer (1), changer de jeu (2), ou partir (3)? : "))
 if jouer == 2:
-    exec(open(r"../menue.py").read())
+    exec(open(r"menue.py").read())
 else:
     print("Au-revoir !")
 
