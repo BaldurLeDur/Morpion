@@ -16,8 +16,8 @@ if jouer == 1:
         winPlayerDeux = 0
         #Créer variable winPlayerRobot et la mettre à 0
         winRobot = 0
-        #Créer variable winJoueur et la mettre à 0
-        winJoueur = 0
+        #Créer variable winPlayerUn et la mettre à 0
+        winPlayerUn = 0
         #Définir nbJoueur qui retourne une fonction input qui demande combien y a-t-il de joueur
         nbJoueur = int(input("Veuillez choisir le nombre de joueur entre 1 et 2 joueur. : "))
         #Définir round qui retourne une fonction input qui demande combien de round sont nécessaire pour gagner le match
@@ -29,12 +29,12 @@ if jouer == 1:
             #Alors :
             #créer une liste listeClassique avec "pierre" "feuille" "ciseaux"
             listeClassique = ["pierre","feuille","ciseaux"]
-            # tant que winJoueur < round ou winRobot < round
-            while winJoueur < round or winRobot < round:
+            # tant que winPlayerUn < round ou winRobot < round
+            while winPlayerUn < round and winRobot < round:
                 #Définir choixJoueur qui retourne une fonction input qui demande le choix du jouer
-                choixJoueur = str(input("choisissez entre pierre feuille et ciseaux. Attention à bien \u00e9crire ! : "))
+                choixJoueur = str(input("choisissez entre pierre feuille et ciseaux. Attention \u00e0 bien \u00e9crire ! : "))
                 #Définir choixRobot qui retourne une fonnction random dans la liste listeClassique
-                choixRobot = random.randint(0,len(listeClassique)-1)
+                choixRobot = random.choice(listeClassique)
                 #Dormir 1 seconde
                 time.sleep(1)
                 #Ecrire pierre
@@ -45,7 +45,7 @@ if jouer == 1:
                 print("feuille")
                 #Dormir 1 seconde
                 time.sleep(1)
-                #Ecrire ciseuax
+                #Ecrire ciseaux
                 print("ciseaux")
                 #dormir 1 seconde
                 time.sleep(1)
@@ -65,8 +65,8 @@ if jouer == 1:
                     winRobot = winRobot + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon si choixRobot == "ciseaux" et choixJoueur == "pierre"
                 elif choixRobot == "ciseaux" and choixJoueur == "pierre":
                     #Alors : écrire "bravo tu as gagnés cette manche"
@@ -75,18 +75,18 @@ if jouer == 1:
                     winPlayerUn = winPlayerUn + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon si choixRobot == "feuille" et choixJoueur == "pierre"
                 elif choixRobot == "feuille" and choixJoueur == "pierre":
                     #Alors : ecrire "le robot à gagner et tu a perdue"
-                    print("le robot \u00e0 gagner et tu a perdue")
+                    print("le robot \u00e0 gagner et tu as perdu")
                     #Incrementer 1 à winRobot
                     winRobot = winRobot + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon si choixRobot == "pierre" et choixJoueur == "feuille"
                 elif choixRobot == "pierre" and choixJoueur == "feuille":
                     #Alors : écrire "bravo tu as gagnés cette manche"
@@ -95,8 +95,8 @@ if jouer == 1:
                     winPlayerUn = winPlayerUn + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon si choixRobot == "ciseaux" et choixJoueur == "feuille"
                 elif choixRobot == "ciseaux" and choixJoueur == "feuille":
                     #Alors : ecrire "le robot à gagner et tu a perdue"
@@ -105,26 +105,26 @@ if jouer == 1:
                     winRobot = winRobot + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon si choixRobot == "feuille" et choixJoueur == "ciseaux"
                 elif choixRobot == "feuille" and choixJoueur == "ciseaux":
-                    #Alors : écrire "bravo tu as gagnés cette manche"
-                    print("bravo tu as gagn\u00e9s cette manche")
+                    #Alors : écrire "bravo tu as gagné cette manche"
+                    print("bravo tu as gagn\u00e9 cette manche")
                     #Incrementer 1 à winPlayer
                     winPlayerUn = winPlayerUn + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon
                 else:
                     #Alors : écrire "erreur, vous avez écris",choixJoueur,"au lieu de pierre, feuille, ciseaux"
                     print("erreur, vous avez \u00e9cris",choixJoueur,"au lieu de pierre, feuille ou ciseaux")
-            #Si winJoueur == round
-            if winJoueur == round:
+            #Si winPlayerUn == round
+            if winPlayerUn == round:
                 #Alors : écrire "tu as gagner"
-                print("tu as gagner")
+                print("tu as gagn\u00e9")
             #Sinon
             else:
                 #Alors : écrire "tu as perdu"
@@ -251,8 +251,8 @@ if jouer == 1:
             ciseaux = str(input("Comment voulez vous renommer la ciseaux : "))
             #créer une liste listePerso avec les variables pierre feuille ciseaux
             listePerso = [pierre,feuille,ciseaux]
-            #Tant que winJoueur < round ou winRobot < round
-            while winJoueur < round or winRobot < round:
+            #Tant que winPlayerUn < round ou winRobot < round
+            while winPlayerUn < round or winRobot < round:
                 #Définir choixJoueur qui retourne une fonction input qui demande le choix du jouer
                 choixJoueur = str(input("choisissez entre pierre feuille et ciseaux. Attention \u00e0 bien \u00e9crire ! : "))
                 #Définir choixRobot qui retourne une fonnction random dans la liste listePerso
@@ -287,8 +287,8 @@ if jouer == 1:
                     winRobot = winRobot + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon si choixRobot == "ciseaux" et choixJoueur == "pierre"
                 elif choixRobot == ciseaux and choixJoueur == pierre:
                     #Alors : écrire "bravo tu as gagnés cette manche"
@@ -297,8 +297,8 @@ if jouer == 1:
                     winPlayerUn = winPlayerUn + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon si choixRobot == "feuille" et choixJoueur == "pierre"
                 elif choixRobot == feuille and choixJoueur == pierre:
                     #Alors : ecrire "le robot à gagner et tu a perdue"
@@ -307,8 +307,8 @@ if jouer == 1:
                     winRobot = winRobot + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon si choixRobot == "pierre" et choixJoueur == "feuille"
                 elif choixRobot == pierre and choixJoueur == feuille:
                     #Alors : écrire "bravo tu as gagnés cette manche"
@@ -317,8 +317,8 @@ if jouer == 1:
                     winPlayerUn = winPlayerUn + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon si choixRobot == "ciseaux" et choixJoueur == "feuille"
                 elif choixRobot == ciseaux and choixJoueur == feuille:
                     #Alors : ecrire "le robot à gagner et tu a perdue"
@@ -327,8 +327,8 @@ if jouer == 1:
                     winRobot = winRobot + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon si choixRobot == "feuille" et choixJoueur == "ciseaux"
                 elif choixRobot == feuille and choixJoueur == ciseaux:
                     #Alors : écrire "bravo tu as gagnés cette manche"
@@ -337,14 +337,14 @@ if jouer == 1:
                     winPlayerUn = winPlayerUn + 1
                     #Dormir 0.5 seconde
                     time.sleep(0.5)
-                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winJoueur " manche(s) remporté(s)."
-                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winJoueur, " manche(s) remport\u00e9(s).")
+                    #Ecrire "le robot est à ",winRobot, "manche(s) remporté(s) et le joueur est à ",winPlayerUn " manche(s) remporté(s)."
+                    print("le robot est \u00e0 ",winRobot, "manche(s) remport\u00e9(s) et le joueur est \u00e0 ",winPlayerUn, " manche(s) remport\u00e9(s).")
                 #Sinon
                 else:
                     #Alors : écrire "erreur, vous avez écris",choixJoueur,"au lieu de pierre, feuille, ciseaux"
                     print("erreur, vous avez \u00e9cris",choixJoueur,"au lieu de pierre, feuille ou ciseaux")
-            #Si winJoueur == round
-            if winJoueur == round:
+            #Si winPlayerUn == round
+            if winPlayerUn == round:
                 #Alors : écrire "tu as gagner"
                 print("tu as gagner")
             #Sinon
