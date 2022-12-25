@@ -1,6 +1,6 @@
 import random
 import time
-exec(open(r"script/pfc_IA.py").read())
+exec(open(r"pfc_IA.py").read())
 def afficher_grille(grille):
     print("     0)  1)  2)")
     print("   -------------")
@@ -129,17 +129,22 @@ def bot(grille):
         grille[4] = "O"
     #random début
     else:
-        choix = random.choice(place)
-        while grille[choix] == "X" or "O":
-            if grille[choix] == "X":
+        bug = True
+        while bug!=False:
+            choix = random.choice(place)
+            if grille[choix] == "O":
+                bug = True
                 del place[choix]
-                choix = random.choice(place)
-            elif grille[choix] == "O":
+                print(choix)
+            elif grille[choix] == "X":
+                bug = True
                 del place[choix]
-                choix = random.choice(place)
+                print(choix)
             elif grille[choix] == " ":
+                bug = False
+                print(choix)
                 grille[choix] = "O"
-                break  
+            
     
         
 def tour(grille,joueur):
@@ -200,7 +205,7 @@ def match_nul(grille):
 
 #DEBUT
 
-print("Joueur 1 tu possède les X, Joueur 2 tu possède les O")
+print("Joueur 1 tu poss\u00e8de les X, le bot poss\u00e8de les O")
 print("Que le match COMMENCE !!!")
 grille=[" "," "," "," "," "," "," "," "," "]
 gagne = 0
@@ -217,7 +222,7 @@ while gagne == 0:
         joueur = "robot"
     else:
         joueur = 1
-    print("Au-revoir !")
+print("Au-revoir !")
 
 #FIN
 

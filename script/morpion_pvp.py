@@ -1,4 +1,4 @@
-exec(open(r"pfc_pvp.py").read())
+exec(open(r"script/pfc_pvp.py").read())
 def afficher_grille(grille):
     print("     0)  1)  2)")
     print("   -------------")

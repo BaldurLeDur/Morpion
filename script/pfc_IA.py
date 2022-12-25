@@ -2,7 +2,7 @@ import random
 #Importer le module time
 import time
 #Définir jouer qui retourne une foction input qui demande si l'utilisateur veut jouer où oui = 1 et non =2
-print("Afin d'ajouter un peu de challenge, vous allez vous battre vontre le bot afin de savoir qui de vous deux vas commencer")
+print("Afin d'ajouter un peu de challenge, vous allez vous battre Contre le Bot afin de savoir qui de vous deux vas commencer")
 time.sleep(0.5)
 #Alors :
 #Créer variable winPlayerUn et la mettre à 0
@@ -12,7 +12,7 @@ winRobot = 0
 #créer une liste listeClassique avec "pierre" "feuille" "ciseaux"
 listeClassique = ["pierre","feuille","ciseaux"]
 #Définir round qui retourne une fonction input qui demande combien de round sont nécessaire pour gagner le match
-round = int(input("Combien de round seront n\u00e9caissaire pour gagner le match ? : "))
+round = int(input("Combien de rounds seront n\u00e9caissaire pour gagner le match ? : "))
 # tant que winPlayerUn < round ou winRobot < round
 while winPlayerUn < round and winRobot < round:
     #Définir choixJoueur qui retourne une fonction input qui demande le choix du jouer
